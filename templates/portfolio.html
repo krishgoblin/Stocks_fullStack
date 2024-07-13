@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block main %}
+<h4 style="text-align: center;">Username: {{ username }}</h4>
+<br />
+<br />
+<div style="text-align: center;">
+    <table style="border-collapse: collapse; width: 80%; margin: 0 auto;">
+        <thead>
+            <tr>
+                <th style="border: 1px solid black; padding: 10px;">Stocks</th>
+                <th style="border: 1px solid black; padding: 10px;">Quantity</th>
+                <th style="border: 1px solid black; padding: 10px;">Current Price</th>
+                <th style="border: 1px solid black; padding: 10px;">Total Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td style="border: 1px solid black; padding: 10px;">{{ transaction.symbol }}</td>
+                <td style="border: 1px solid black; padding: 10px;">{{ transaction.total_shares }}</td>
+                <td style="border: 1px solid black; padding: 10px;">${{ transaction.current_price }}</td>
+                <td style="border: 1px solid black; padding: 10px;">${{ transaction.total_value }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" style="border: 1px solid black; padding: 10px;">Cash</td>
+                <td style="border: 1px solid black; padding: 10px;">${{ cash }}</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="border: 1px solid black; padding: 10px;">Total Stocks Value</td>
+                <td style="border: 1px solid black; padding: 10px;">${{ total_stocks_value }}</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="border: 1px solid black; padding: 10px;">Grand Total</td>
+                <td style="border: 1px solid black; padding: 10px;">${{ grand_total }}</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+{% endblock %}

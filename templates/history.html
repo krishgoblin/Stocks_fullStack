@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <center>
+    <table style = "border : 2px solid black">
+        <thead>
+            <tr style = "border : 1px solid black" >
+                <th style = "padding : 15px">Stocks</th>
+                <th style = "padding : 15px">Quantity</th>
+                <th style = "padding : 15px">Price</th>
+                <th style = "padding : 15px">Type</th>
+                <th style = "padding : 15px">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trans in transactions %}
+            <tr style = "border : 1px solid black">
+                <td style = "padding : 15px">{{ trans.symbol }}</td>
+                <td style = "padding : 15px">{{ trans.shares }}</td>
+                <td style = "padding : 15px">$ {{ trans.price }}</td>
+                <td style = "padding : 15px">{{ trans.type }}</td>
+                <td style = "padding : 15px">{{ trans.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </center>
+{% endblock %}
